@@ -6,8 +6,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <title>Pig Dice</title>
-    <title></title>
   </head>
-  <body>
+  <body class="container">
+    <h1 class="jumbotron">Pig Dice!</h1>
+    <form id="form">
+      <div class="form-group">
+        <label for="PlayerOne">Player Name</label>
+        <input type="text" class="form-control" id="nameInput">
+      </div>
+      <div class="form-group">
+        <label for="PlayerOne">Player Age</label>
+        <input type="number" class="form-control" id="ageInput">
+      </div>
+      <div id="radio-form">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="playerOneOrTwo" id="player1" value="player1" checked>
+          <label class="form-check-label" for="exampleRadios1">
+            Player One
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="playerOneOrTwo" id="player2" value="player2">
+          <label class="form-check-label" for="exampleRadios2">
+            Player Two
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Player">Player Experience</label>
+        <input type="text" class="form-control" id="experienceInput">
+      </div>
+      <button type="submit" class="btn btn-primary">Roll The Dice</button>
+    </form>
   </body>
 </html>
