@@ -1,6 +1,8 @@
 //Business Logic for Game
+
 function Game () {
   this.gamePlayers = [];
+  this.scoreTurn = 0;
 }
 
 Game.prototype.addPlayers = function(player) {
@@ -45,12 +47,15 @@ function Player (name, age, id, experience) {
 
 Player.prototype.roll = function() {
   var randomNum = Math.floor(Math.random()* (6)+1);
-    if (randomNum===1){
-      scoreTurn = 0;
-      addScoretoTotal(scoreTurn);
-      switchPlayer();
-  } else if (randomNum > 1) {
-    scoreTurn += randomNum
+
+  if(randomNum === 1){
+    game.scoreTurn = 0;
+    appendScores();
+    switchPlayer();
+  }else if (randomNum > 1){
+    game.scoreTurn += randomNum
+    alert("hi")
+    appendScores();
   }
 }
 
@@ -60,7 +65,7 @@ Player.prototype.addScoreToTotal = function() {
 }
 
 Player.prototype.hold = function () {
-  addScoretoTotal(scoreTurn);
+  addScoretoTotal(game.scoreTurn);
   switchPlayer();
 }
 
@@ -79,7 +84,7 @@ Player.prototype.switchPlayer = function(player) {
 var game = new Game();
 function attachRollListeners() {
   $("#roll").click(function() {
-      roll();
+      game.gamePlayers[0].roll();
     });
   };
 
@@ -88,6 +93,11 @@ function attachHoldListeners() {
       hold();
   });
 };
+
+function appendScores(roll){
+  $("ul#player1Score").append("<li>" + randomNum + "</li>");
+  $("#runningTotalPlayer1").text(scoreTurn)
+}
 
 $(document).ready(function() {
   attachHoldListeners();
@@ -101,6 +111,7 @@ $(document).ready(function() {
     var inputtedExperience = $("input#experienceInput").val();
     var history = [];
     var newPlayer = new Player(inputtedName, inputtedAge, inputtedPlayerId, inputtedExperience);
+    console.log(newPlayer instanceof Player);
     game.addPlayers(newPlayer);
     game.startNewGame();
   });
