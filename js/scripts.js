@@ -44,20 +44,18 @@ function Player (name, age, id, experience) {
   // this.active = true
 }
 
+// Player.prototype.roll = function() {
+//   var randomNum = Math.floor(Math.random()* (6)+1);
+//   $("ul#player1Score").append("<li>" + randomNum + "</li>");
+//   $("#runningTotalPlayer1").text(game.scoreTurn)
+//   if(randomNum === 1){
+//     game.scoreTurn = 0;
+//     switchPlayer();
+//   }else if (randomNum > 1){
+//     game.scoreTurn += randomNum
+//   }
+// }
 
-Player.prototype.roll = function() {
-  var randomNum = Math.floor(Math.random()* (6)+1);
-
-  if(randomNum === 1){
-    game.scoreTurn = 0;
-    appendScores();
-    switchPlayer();
-  }else if (randomNum > 1){
-    game.scoreTurn += randomNum
-    alert("hi")
-    appendScores();
-  }
-}
 
 Player.prototype.addScoreToTotal = function() {
   var scoreTurn = roll();
@@ -70,7 +68,7 @@ Player.prototype.hold = function () {
 }
 
 Player.prototype.switchPlayer = function(player) {
-  if (this.id === "player1") {
+  if (this.id === "player1" && game.scoreTurn >=0) {
     roll(player2);
   } else if (this.id === "player2") {
     roll(player1);
@@ -84,7 +82,7 @@ Player.prototype.switchPlayer = function(player) {
 var game = new Game();
 function attachRollListeners() {
   $("#roll").click(function() {
-      game.gamePlayers[0].roll();
+      roll();
     });
   };
 
@@ -94,10 +92,28 @@ function attachHoldListeners() {
   });
 };
 
-function appendScores(roll){
-  $("ul#player1Score").append("<li>" + randomNum + "</li>");
-  $("#runningTotalPlayer1").text(scoreTurn)
+function roll() {
+  var randomNum = Math.floor(Math.random()* (6)+1);
+  $("ul#player1Score").prepend("<li>" + randomNum + "</li>");
+
+  // game.scoreTurn = randomNum
+  if(randomNum === 1){
+    game.scoreTurn = 0;
+    $("#runningTotalPlayer1").text(game.scoreTurn)
+    switchPlayer();
+  }if (randomNum > 1){
+    game.scoreTurn += randomNum
+    $("#runningTotalPlayer1").text(game.scoreTurn)
+  }if (game.scoreTurn >= 50){
+      Player.switchPlayer();
+  }
 }
+
+
+// function appendScores(roll){
+//   $("ul#player1Score").append("<li>" + randomNum + "</li>");
+//   $("#runningTotalPlayer1").text(game.scoreTurn)
+// }
 
 $(document).ready(function() {
   attachHoldListeners();
