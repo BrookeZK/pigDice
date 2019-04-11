@@ -9,56 +9,42 @@
   </head>
   <body class="container">
     <h1 class="jumbotron">Pig Dice!</h1>
-    <form id="form">
+    <form id="form1">
       <div class="form-group">
-        <label for="PlayerOne">Player Name</label>
-        <input type="text" class="form-control" id="nameInput">
+        <label for="PlayerOne">Player 1 Name</label>
+        <input type="text" class="form-control" id="nameInput1">
       </div>
-      <div class="form-group">
-        <label for="PlayerOne">Player Age</label>
-        <input type="number" class="form-control" id="ageInput">
-      </div>
-      <div id="radio-form">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="playerId" id="player1" value="player1" checked>
-          <label class="form-check-label" for="exampleRadios1">
-            Player One
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="playerId" id="player2" value="player2">
-          <label class="form-check-label" for="exampleRadios2">
-            Player Two
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="Player">Player Experience</label>
-        <input type="text" class="form-control" id="experienceInput">
-      </div>
-      <button type="submit" class="btn btn-primary">Pig Dice Player Sign UP</button>
-
+      <button type="submit" class="btn btn-primary">Next</button>
     </form>
-    <div id="startTheGame">
-      <button type="button" id="startGame" class="btn btn-primary">Start The Game</button>
-    </div>
+    <form id="form2">
+      <div class="form-group">
+        <label for="PlayerOne">Player 2 Name</label>
+        <input type="text" class="form-control" id="nameInput2">
+      </div>
+      <button type="submit" id="startGame" class="btn btn-primary">Start The Game</button>
+    </form>
 
     <div id="gamePlayArea">
-
     <button type="button" id="roll" class="btn btn-primary">Roll The Dice</button>
 
     <button type="button" id="hold" class="btn btn-primary">Hold to Add to Score</button>
+
     <div class="row">
-      <div class="col-md-6">
-        <h1>Player 1</h1>
+      <div class="col-md-4">
+        <h2>PLayer 1</h2>
         <ul id="player1Score"></ul>
-        <p id="runningTotalPlayer1"></p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
+        <h3>game play area</h3>
+        <ul id="gamePlay"></ul>
+        <p id="runningTotal"></p>
+      </div>
+      <div class="col-md-4">
         <h2> Player 2</h2>
         <ul id="player2Score"></ul>
       </div>
     </div>
   </div>
+
   </body>
 </html>

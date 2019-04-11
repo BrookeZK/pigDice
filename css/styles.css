@@ -1,10 +1,11 @@
-/* #startTheGame {
+#form2 {
   display: none;
-} */
+}
 
-/* #gamePlayArea {
+
+#gamePlayArea {
   display: none;
-} */
+}
 
 .col-md-6{
   border: solid black 5px;
